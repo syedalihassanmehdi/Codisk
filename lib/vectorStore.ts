@@ -37,7 +37,7 @@ export const vectorStore = {
     await index.upsert({
       id:       chunk.id,
       vector:   embedding,
-      metadata: chunk,
+      metadata: chunk as unknown as Record<string, unknown>,
     });
   },
 
