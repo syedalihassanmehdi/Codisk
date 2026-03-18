@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Pull relevant context from vector store for extra awareness
-    const allChunks = vectorStore.getAll();
+    const allChunks = await vectorStore.getAll();
     const relatedChunks = allChunks
       .filter((c) => c.filePath !== filePath)
       .slice(0, 5)
