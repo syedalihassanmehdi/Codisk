@@ -64,7 +64,7 @@ export const vectorStore = {
 
     return results
       .map((r) => {
-        const chunk = r.metadata as VectorChunk;
+        const chunk = r.metadata as unknown as VectorChunk;
         const score = r.score ?? 0;
         const weightedScore = score * (chunk.importance || 1.0);
         return { chunk, score, weightedScore };
@@ -80,7 +80,7 @@ export const vectorStore = {
       topK:            1000,
       includeMetadata: true,
     });
-    return results.map((r) => r.metadata as VectorChunk);
+    return results.map((r) => r.metadata as unknown as VectorChunk);
   },
 
   async size(): Promise<number> {
