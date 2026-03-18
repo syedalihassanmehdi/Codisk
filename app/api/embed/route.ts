@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
         `File: ${file.path || file.name}\nType: ${c.type}${c.name ? ` — ${c.name}` : ""}\nLines: ${c.startLine}-${c.endLine}\n\n${c.content}`
     );
 
-    const embeddings = await getBatchEmbeddings(texts, model, 4);
+    const embeddings = await getBatchEmbeddings(texts, model);
 
     // Write each chunk to Upstash Vector
     await Promise.all(
